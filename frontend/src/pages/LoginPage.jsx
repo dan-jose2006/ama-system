@@ -153,27 +153,27 @@ export default function LoginPage() {
       <div className="absolute inset-0" style={{ zIndex: 0, background: 'radial-gradient(ellipse 120% 80% at 60% 50%, #0a0a1a 0%, #050508 60%, #000 100%)' }} />
       <div className="absolute inset-0" style={{ zIndex: 0, background: 'radial-gradient(ellipse 60% 60% at 70% 40%, rgba(15,98,254,0.08) 0%, transparent 70%)' }} />
 
-      {/* ── Spline 3D background (desktop only — too heavy for mobile) ── */}
+      {/* ── Spline 3D background ── */}
       <iframe
         src="https://my.spline.design/retrofuturismbganimation-CNIv0tEDpl9Wf8Uqdutu6VIY/"
         frameBorder="0"
-        className="absolute inset-0 w-full h-full pointer-events-none hidden md:block"
+        className="absolute inset-0 w-full h-full pointer-events-none"
         style={{ zIndex: 1, filter: 'brightness(1.3) saturate(1.15)' }}
         title="Background animation"
       />
 
       {/* ── Global dark veil ── */}
-      <div className="absolute inset-0 pointer-events-none hidden md:block" style={{ zIndex: 2, background: 'rgba(8,8,16,0.30)' }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2, background: 'rgba(8,8,16,0.30)' }} />
 
-      {/* ── Left-side mask (desktop) ── */}
+      {/* ── Left-side mask ── */}
       <div
         className="absolute inset-y-0 left-0 pointer-events-none hidden md:block"
         style={{ zIndex: 2, width: '48%', background: 'linear-gradient(to right, rgba(5,5,12,1) 0%, rgba(5,5,12,1) 50%, rgba(5,5,12,0.6) 75%, transparent 100%)' }}
       />
 
       {/* ── Bottom fade ── */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none hidden md:block" style={{ zIndex: 2, background: 'linear-gradient(to top, rgba(5,5,12,0.98) 0%, transparent 100%)' }} />
-      <div className="absolute bottom-0 right-0 w-52 h-12 pointer-events-none hidden md:block" style={{ zIndex: 3, background: 'rgba(5,5,12,0.99)' }} />
+      <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none" style={{ zIndex: 2, background: 'linear-gradient(to top, rgba(5,5,12,0.98) 0%, transparent 100%)' }} />
+      <div className="absolute bottom-0 right-0 w-52 h-12 pointer-events-none" style={{ zIndex: 3, background: 'rgba(5,5,12,0.99)' }} />
 
       <motion.div
         className="relative w-full max-w-[400px]"
