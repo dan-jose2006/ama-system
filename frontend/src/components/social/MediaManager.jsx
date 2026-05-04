@@ -4,7 +4,7 @@ import {
   Image, Film, X, Plus, Upload, Sparkles,
   AlertCircle, Move, ExternalLink, Copy, CheckCheck, Loader2,
 } from 'lucide-react';
-import api from '../../services/api';
+import api, { resolveBackendUrl } from '../../services/api';
 
 /* ─── per-platform limits and allowed types ───────────────────────────── */
 const LIMITS = { instagram: 20, linkedin: 9, twitter: 4 };
@@ -205,7 +205,7 @@ function AddMediaPanel({ platform, color, onAdd, onClose, draftContext = {} }) {
       // No pre-loader needed; it avoids 30s+ hangs on Pollinations.
       onAdd({
         id:     uid(),
-        url:    imageUrl,
+        url:    resolveBackendUrl(imageUrl),
         name:   `ai-${platform}-${Date.now()}.jpg`,
         type:   'image',
         source: 'ai',

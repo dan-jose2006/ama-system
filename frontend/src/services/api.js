@@ -35,3 +35,17 @@ api.interceptors.response.use(
 );
 
 export default api;
+
+/**
+ * Convert a backend-relative path (e.g. /api/v1/files/ai-generated/foo.jpg)
+ * to an absolute URL using VITE_API_URL in production.
+ * Absolute URLs (http/https) and data-URIs are returned unchanged.
+ */
+export function resolveBackendUrl(path) {
+  if (!path) return path;
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:')) {
+    return path;
+  }
+  const base = import.meta.env.VITE_API_URL || '';
+  return `${base}${path}`;
+}

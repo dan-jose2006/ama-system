@@ -184,7 +184,8 @@ export default function RegeneratingOverlay({ visible, draftId, token, onDone, o
     accRef.current = '';
     closedRef.current = false;
 
-    const url = `/api/v1/drafts/${draftId}/regenerate-stream?token=${encodeURIComponent(token || '')}`;
+    const baseUrl = import.meta.env.VITE_API_URL || '';
+    const url = `${baseUrl}/api/v1/drafts/${draftId}/regenerate-stream?token=${encodeURIComponent(token || '')}`;
     const es = new EventSource(url);
     esRef.current = es;
 

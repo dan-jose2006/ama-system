@@ -8,7 +8,7 @@ import PublishResultsPanel from '../components/social/PublishResultsPanel';
 import MediaManager from '../components/social/MediaManager';
 import RegeneratingOverlay from '../components/social/RegeneratingOverlay';
 import LinkedInRedirectModal from '../components/social/LinkedInRedirectModal';
-import api from '../services/api';
+import api, { resolveBackendUrl } from '../services/api';
 import {
   ArrowLeft, Linkedin, Twitter, Instagram, Hash,
   Check, X, RefreshCw, Loader2, Send, Clock,
@@ -71,9 +71,9 @@ export default function DraftDetailPage() {
         source: 'ai',
       });
 
-      setLinkedinMedia(prev  => [...prev,  makeItem(wide.url,   'linkedin')]);
-      setTwitterMedia(prev   => [...prev,  makeItem(wide.url,   'twitter')]);
-      setInstagramMedia(prev => [...prev,  makeItem(square.url, 'instagram')]);
+      setLinkedinMedia(prev  => [...prev,  makeItem(resolveBackendUrl(wide.url),   'linkedin')]);
+      setTwitterMedia(prev   => [...prev,  makeItem(resolveBackendUrl(wide.url),   'twitter')]);
+      setInstagramMedia(prev => [...prev,  makeItem(resolveBackendUrl(square.url), 'instagram')]);
       setGenAllResult({ provider, prompt });
     } catch (err) {
       console.error('Generate for all failed:', err);
