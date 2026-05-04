@@ -247,14 +247,14 @@ export default function DashboardPage() {
       <div className="animate-fade-in">
 
         {/* ── Header ──────────────────────────────────── */}
-        <div className="flex items-start justify-between mb-6">
-          <div>
-            <h1 className="text-2xl font-semibold text-surface-100 mb-1">Content Dashboard</h1>
-            <p className="text-surface-400 text-sm">Review, approve and manage AI-generated content drafts</p>
+        <div className="flex items-start justify-between gap-3 mb-6 flex-wrap">
+          <div className="flex-1 min-w-0">
+            <h1 className="text-xl md:text-2xl font-semibold text-surface-100 mb-1">Content Dashboard</h1>
+            <p className="text-surface-400 text-sm hidden sm:block">Review, approve and manage AI-generated content drafts</p>
           </div>
-          <button onClick={handleRefresh} className="btn-secondary flex items-center gap-2">
+          <button onClick={handleRefresh} className="btn-secondary flex items-center gap-2 flex-shrink-0">
             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
-            Refresh
+            <span className="hidden sm:inline">Refresh</span>
           </button>
         </div>
 
@@ -266,16 +266,17 @@ export default function DashboardPage() {
           <StatCard label="Rejected"        value={statusCounts.rejected || 0} icon={XCircle} color="text-red-400" bg="bg-red-500/10" delay={0.15} />
         </div>
 
-        {/* ── Tabs ────────────────────────────────────── */}
-        <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+        {/* ── Tabs + Filters ───────────────────────── */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
+          {/* Tabs */}
           <div
-            className="flex items-center gap-1 p-1 rounded-xl w-fit"
+            className="flex items-center gap-1 p-1 rounded-xl w-full sm:w-fit"
             style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}
           >
             <button
               id="tab-team-drafts"
               onClick={() => setActiveTab('team')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-2 flex-1 sm:flex-none justify-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 activeTab === 'team'
                   ? 'bg-[#0F62FE]/15 text-[#60a5fa] shadow-sm'
                   : 'text-surface-400 hover:text-surface-200'
@@ -292,7 +293,7 @@ export default function DashboardPage() {
             <button
               id="tab-my-drafts"
               onClick={() => setActiveTab('mine')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-2 flex-1 sm:flex-none justify-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 activeTab === 'mine'
                   ? 'bg-[#0F62FE]/15 text-[#60a5fa] shadow-sm'
                   : 'text-surface-400 hover:text-surface-200'
@@ -303,13 +304,13 @@ export default function DashboardPage() {
             </button>
           </div>
 
-          {/* ── Filters ───────────────────────────────── */}
-          <div className="flex items-center gap-3">
-            <Filter className="w-4 h-4 text-surface-500" />
+          {/* Filters */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <Filter className="w-4 h-4 text-surface-500 flex-shrink-0" />
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="select-field text-xs py-1.5 max-w-[180px]"
+              className="select-field text-xs py-1.5 flex-1 min-w-[120px] max-w-[180px]"
             >
               {statusOptions.map((opt) => (
                 <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -317,10 +318,10 @@ export default function DashboardPage() {
             </select>
             <input
               type="text"
-              placeholder="Filter by team..."
+              placeholder="Team..."
               value={filterTeam}
               onChange={(e) => setFilterTeam(e.target.value)}
-              className="input-field text-xs py-1.5 max-w-[150px]"
+              className="input-field text-xs py-1.5 flex-1 min-w-[80px] max-w-[140px]"
             />
             {hasFilters && (
               <button

@@ -218,18 +218,18 @@ export default function DraftDetailPage() {
     <AppLayout>
       <div className="animate-fade-in max-w-6xl mx-auto">
         {/* Back + Header */}
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-start gap-3 mb-6">
           <button
             onClick={() => navigate('/dashboard')}
-            className="p-2 rounded-xl hover:bg-surface-800 text-surface-400 hover:text-surface-200 transition-colors"
+            className="p-2 rounded-xl hover:bg-surface-800 text-surface-400 hover:text-surface-200 transition-colors flex-shrink-0 mt-0.5"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <div className="flex-1">
-            <h1 className="text-2xl font-bold text-surface-100">
+          <div className="flex-1 min-w-0">
+            <h1 className="text-xl md:text-2xl font-bold text-surface-100 truncate">
               {draft.content_title || 'Untitled Draft'}
             </h1>
-            <div className="flex items-center gap-4 mt-1 text-sm text-surface-400">
+            <div className="flex flex-wrap items-center gap-3 mt-1 text-sm text-surface-400">
               <span className="flex items-center gap-1"><User className="w-3.5 h-3.5" /> {draft.submitter_name}</span>
               {draft.team && <span>🏢 {draft.team}</span>}
               <span className="flex items-center gap-1">
@@ -465,15 +465,15 @@ export default function DraftDetailPage() {
 
         {/* Action Buttons */}
         {isEditable && !publishResults && (
-          <div className="surface-card p-5">
-            <div className="flex items-center justify-between">
+          <div className="surface-card p-4 md:p-5">
+            <div className="flex flex-wrap items-center gap-3 justify-between">
               <button
                 onClick={handleRegenerate}
                 className="btn-secondary flex items-center gap-2"
               >
                 <RefreshCw className="w-4 h-4" /> Regenerate
               </button>
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
                 <button
                   onClick={() => setShowRejectModal(true)}
                   className="btn-danger flex items-center gap-2"
