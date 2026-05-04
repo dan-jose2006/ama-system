@@ -107,13 +107,18 @@ function SubmissionCard({ sub, idx, onClick }) {
       </p>
 
       {/* Row 3: Meta + Platform dots */}
-      <div className="flex items-center justify-between flex-wrap gap-4">
-        <div className="flex items-center gap-4 text-xs text-surface-500 font-medium">
-          <span className="capitalize px-2 py-0.5 rounded bg-surface-800">Type: {sub.content_type}</span>
-          <span className="capitalize px-2 py-0.5 rounded bg-surface-800">Priority: {sub.priority}</span>
+      <div className="flex items-center justify-between flex-wrap gap-2">
+        <div className="flex items-center gap-2 flex-wrap text-xs text-surface-500 font-medium">
+          <span className="capitalize px-2 py-0.5 rounded bg-surface-800">{sub.content_type}</span>
+          <span className="capitalize px-2 py-0.5 rounded bg-surface-800">{sub.priority}</span>
           <span className="flex items-center gap-1.5">
             <Clock size={12} />
-            {new Date(sub.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+            <span className="hidden sm:inline">
+              {new Date(sub.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+            </span>
+            <span className="sm:hidden">
+              {new Date(sub.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}
+            </span>
           </span>
         </div>
         {hasPublishResults ? (

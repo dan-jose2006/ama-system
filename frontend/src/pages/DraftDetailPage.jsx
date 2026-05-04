@@ -247,7 +247,7 @@ export default function DraftDetailPage() {
             <FileText className="w-4 h-4 text-brand-500" /> Original Submission
           </h3>
           <p className="text-surface-300 text-sm leading-relaxed">{draft.content_description}</p>
-          <div className="flex items-center gap-4 mt-3 text-xs text-surface-500">
+          <div className="flex flex-wrap items-center gap-3 mt-3 text-xs text-surface-500">
             <span className="capitalize">Type: {draft.content_type}</span>
             <span className="capitalize">Tone: {draft.tone_preference}</span>
             <span className="capitalize">Priority: {draft.priority}</span>
@@ -261,7 +261,7 @@ export default function DraftDetailPage() {
 
         {/* ── Generate AI Images for All Platforms ────────────────────── */}
         {isEditable && (
-          <div className="surface-card p-4 mb-4 flex items-center justify-between gap-4">
+          <div className="surface-card p-4 mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-brand-500/10 border border-brand-500/20 flex items-center justify-center flex-shrink-0">
                 <Sparkles size={18} className="text-brand-500" />
@@ -311,7 +311,7 @@ export default function DraftDetailPage() {
               value={editedLinkedin}
               onChange={(e) => isEditable && setEditedLinkedin(e.target.value)}
               readOnly={!isEditable}
-              className="textarea-field text-sm min-h-[220px]"
+              className="textarea-field text-sm min-h-[140px] md:min-h-[220px]"
               maxLength={3000}
             />
             {/* Media section */}
@@ -351,7 +351,7 @@ export default function DraftDetailPage() {
               value={editedTwitter}
               onChange={(e) => isEditable && setEditedTwitter(e.target.value)}
               readOnly={!isEditable}
-              className="textarea-field text-sm min-h-[220px]"
+              className="textarea-field text-sm min-h-[140px] md:min-h-[220px]"
               maxLength={280}
             />
             {editedTwitter.length > 280 && (
@@ -396,7 +396,7 @@ export default function DraftDetailPage() {
               value={editedInstagram}
               onChange={(e) => isEditable && setEditedInstagram(e.target.value)}
               readOnly={!isEditable}
-              className="textarea-field text-sm min-h-[220px]"
+              className="textarea-field text-sm min-h-[140px] md:min-h-[220px]"
               maxLength={2200}
             />
             {/* Media section */}

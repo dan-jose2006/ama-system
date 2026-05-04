@@ -242,7 +242,7 @@ export default function SubmissionDetailPage() {
               {submission.content_description?.substring(0, 200)}{submission.content_description?.length > 200 ? '…' : ''}
             </p>
 
-            <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2.5">
               {[
                 { icon: User,         label: 'By',       value: submission.name },
                 { icon: Tag,          label: 'Type',     value: submission.content_type },
@@ -350,7 +350,7 @@ export default function SubmissionDetailPage() {
             transition={{ duration: 0.35, delay: 0.3 }}
             className={`surface-card p-4 border-l-2 ${approval.decision === 'approved' ? 'border-l-[#14B8A6]' : 'border-l-red-500'}`}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               {approval.decision === 'approved'
                 ? <CheckCircle2 size={15} className="text-[#14B8A6] flex-shrink-0" />
                 : <XCircle size={15} className="text-red-400 flex-shrink-0" />
@@ -358,7 +358,7 @@ export default function SubmissionDetailPage() {
               <span className="text-sm font-semibold text-[#f4f4f5]">
                 {approval.decision === 'approved' ? 'Approved' : 'Rejected'} by {approval.reviewer_name}
               </span>
-              <span className="text-[11px] text-[#52525b] ml-auto">
+              <span className="text-[11px] text-[#52525b] sm:ml-auto">
                 {new Date(approval.created_at).toLocaleString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
               </span>
             </div>
